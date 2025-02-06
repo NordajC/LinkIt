@@ -1,0 +1,8 @@
+# Node modules - avoid copying unnecessary dependencies
+node_modules/
+
+# SvelteKit build artifacts (not needed for the build, only after build)
+.svelte-kit/
+
+# Ignore lock files (optional)
+yarn.lock
