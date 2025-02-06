@@ -33,4 +33,6 @@ type User = {
 type Theme = 'Nord' | 'Dracula' | 'Valentine' | 'Default';
 
 
-export {};
+export {
+	User
+};
