@@ -76,3 +76,220 @@
     @apply bg-background text-foreground;
   }
 }
+
+@layer base{
+  /* ========================= */
+  /*          BUTTONS          */
+  /* ========================= */
+  .btn {
+    @apply px-4 py-2 text-sm font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-ring transition
+    border
+    ;
+  }
+
+  .btn-primary {
+    @apply bg-primary text-white hover:bg-primary/80 disabled:opacity-50;
+  }
+
+  .btn-secondary {
+    @apply bg-secondary text-secondary-foreground hover:bg-secondary/80 disabled:opacity-50;
+  }
+
+  .btn-outline {
+    @apply border border-border bg-transparent text-foreground hover:bg-muted;
+  }
+
+  /* ========================= */
+  /*          INPUTS           */
+  /* ========================= */
+  .input {
+    @apply w-full px-4 py-2 border border-input rounded-md text-sm bg-background focus:outline-none focus:ring-2 focus:ring-ring;
+  }
+
+  /* Disabled Input */
+  .input:disabled {
+    @apply opacity-50 cursor-not-allowed;
+  }
+
+  /* ========================= */
+  /*          LABELS           */
+  /* ========================= */
+  .label {
+    @apply text-sm font-medium text-foreground;
+  }
+
+  /* ========================= */
+  /*       CHECKBOX & RADIO    */
+  /* ========================= */
+  .checkbox,
+  .radio {
+    @apply w-4 h-4 border border-input rounded focus:ring-2 focus:ring-ring;
+  }
+
+  /* ========================= */
+  /*         TEXTAREA          */
+  /* ========================= */
+  .textarea {
+    @apply w-full px-4 py-2 border border-input rounded-md text-sm bg-background focus:outline-none focus:ring-2 focus:ring-ring resize-none;
+  }
+
+  /* ========================= */
+  /*         SELECT            */
+  /* ========================= */
+  .select {
+    @apply w-full px-4 py-2 border border-input rounded-md text-sm bg-background focus:outline-none focus:ring-2 focus:ring-ring;
+  }
+
+  /* ========================= */
+  /*        FORM GROUP         */
+  /* ========================= */
+  .form-group {
+    @apply flex flex-col gap-2;
+  }
+
+  /* ========================= */
+  /*       HELPER TEXT         */
+  /* ========================= */
+  .helper-text {
+    @apply text-xs text-muted-foreground;
+  }
+
+  /* ========================= */
+  /*          CARDS            */
+  /* ========================= */
+  .card {
+    @apply p-4 border border-border rounded-lg shadow-sm bg-card;
+  }
+
+  .card-title {
+    @apply text-lg font-semibold;
+  }
+
+  .card-text {
+    @apply text-sm text-muted-foreground;
+  }
+
+  /* ========================= */
+  /*         ALERTS            */
+  /* ========================= */
+  .alert {
+    @apply p-4 border border-border rounded-md bg-muted text-sm text-muted-foreground;
+  }
+
+  /* ========================= */
+  /*        MODAL / DIALOG     */
+  /* ========================= */
+  .modal-overlay {
+    @apply fixed inset-0 flex items-center justify-center bg-black/50;
+  }
+
+  .modal {
+    @apply p-6 bg-card rounded-lg shadow-lg;
+  }
+
+  .modal-title {
+    @apply text-lg font-semibold;
+  }
+
+  .modal-content {
+    @apply text-sm text-muted-foreground;
+  }
+
+  /* ========================= */
+  /*        FLEX UTILS         */
+  /* ========================= */
+  .flex-center {
+    @apply flex items-center justify-center;
+  }
+
+  .flex-between {
+    @apply flex items-center justify-between;
+  }
+
+  /* ========================= */
+  /*       FORM WRAPPER        */
+  /* ========================= */
+  .form {
+    @apply w-full max-w-lg mx-auto bg-card p-6 rounded-lg shadow-md border border-border;
+  }
+
+  /* ========================= */
+  /*        FORM GROUP         */
+  /* ========================= */
+  .form-group {
+    @apply flex flex-col gap-4;
+  }
+
+  /* ========================= */
+  /*       FORM LABELS         */
+  /* ========================= */
+  .form-label {
+    @apply text-sm font-medium text-foreground w-full;
+  }
+
+  /* ========================= */
+  /*       FORM INPUTS         */
+  /* ========================= */
+  .form-input {
+    @apply w-full px-4 py-2 border border-input rounded-md text-sm bg-background focus:outline-none focus:ring-2 focus:ring-ring my-2;
+  }
+
+  .form-input:disabled {
+    @apply opacity-50 cursor-not-allowed;
+  }
+
+  /* ========================= */
+  /*       FORM TEXTAREA       */
+  /* ========================= */
+  .form-textarea {
+    @apply w-full px-4 py-2 border border-input rounded-md text-sm bg-background focus:outline-none focus:ring-2 focus:ring-ring resize-none;
+  }
+
+  /* ========================= */
+  /*        FORM SELECT        */
+  /* ========================= */
+  .form-select {
+    @apply w-full px-4 py-2 border border-input rounded-md text-sm bg-background focus:outline-none focus:ring-2 focus:ring-ring;
+  }
+
+  /* ========================= */
+  /*    FORM CHECKBOX / RADIO  */
+  /* ========================= */
+  .form-checkbox,
+  .form-radio {
+    @apply w-4 h-4 border border-input rounded focus:ring-2 focus:ring-ring;
+  }
+
+  /* ========================= */
+  /*    FORM HELP TEXT         */
+  /* ========================= */
+  .form-help {
+    @apply text-xs text-muted-foreground;
+  }
+
+  /* ========================= */
+  /* FORM VALIDATION MESSAGES  */
+  /* ========================= */
+  .form-error {
+    @apply text-xs text-destructive mt-1;
+  }
+
+  .form-success {
+    @apply text-xs text-success mt-1;
+  }
+
+  /* ========================= */
+  /*        FORM BUTTON        */
+  /* ========================= */
+  .form-button {
+    @apply w-full px-4 py-2 text-sm font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-ring transition;
+  }
+
+  .form-button-primary {
+    @apply bg-primary text-white hover:bg-primary/80 disabled:opacity-50;
+  }
+
+  .form-button-secondary {
+    @apply bg-secondary text-secondary-foreground hover:bg-secondary/80 disabled:opacity-50;
+  }
+}
