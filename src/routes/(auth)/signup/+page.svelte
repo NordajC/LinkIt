@@ -1,0 +1,19 @@
+<script lang="ts">
+
+</script>
+
+<form method="POST" class="flex flex-col items-center bg-slate-500 p-3 rounded-lg gap-4">
+	<label>
+		Name:
+		<input type="text" placeholder="Name" name="name" required />
+	</label>
+	<label>
+		Email:
+		<input type="email" placeholder="Email" name="email" required />
+	</label>
+	<label>
+		Password:
+		<input type="password" placeholder="Password" name="password" required minlength="8" />
+	</label>
+	<button class="bg-slate-400 rounded-lg p-2"> Sign Up </button>
+</form>

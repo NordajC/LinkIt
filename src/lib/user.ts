@@ -1,7 +1,7 @@
 import { writable } from 'svelte/store';
 import { ID } from 'appwrite';
 import { goto } from '$app/navigation';
-import { account } from '$lib/db';
+import { account } from '$lib/appwrite';
 
 // Avoid auth calls in server-side, so that a user is not shared between requests
 const isBrowser = typeof window !== 'undefined';
@@ -20,13 +20,13 @@ const createUser = () => {
 
 	init();
 
-	async function register(email, password, name) {
+	async function register(email: string, password: string, name: string) {
 		if (!isBrowser) return;
 		await account.create(ID.unique(), email, password, name);
 		await login(email, password);
 	}
 
-	async function login(email, password) {
+	async function login(email: string, password: string) {
 		if (!isBrowser) return;
 		await account.createEmailPasswordSession(email, password);
 		await init();
