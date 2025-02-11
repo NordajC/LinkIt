@@ -1,8 +1,5 @@
 <script lang="ts">
-    import type { PageData } from './$types';
-
-    let { data }: { data: PageData } = $props();
-    console.log(data)
+	let { form } = $props();
 </script>
 
 <form method="POST" class="flex flex-col items-center bg-slate-500 p-3 rounded-lg gap-4">
@@ -16,4 +13,5 @@
 	</label>
 	<button class="bg-slate-400 rounded-lg p-2 "> Login </button>
 	<p>Dont have an account? <strong><a href="/auth/signup" class="underline">Sign Up</a></strong> </p>
+	<p class="text-red-500">{form?.error}</p>
 </form>

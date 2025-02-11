@@ -1,6 +1,5 @@
 <script lang="ts">
 	let { form } = $props();
-	console.log(form)
 </script>
 
 <form method="POST" class="flex flex-col items-center bg-slate-500 p-3 rounded-lg gap-4">
