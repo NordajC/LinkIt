@@ -1,10 +1,8 @@
 <script lang="ts">
 	let { data } = $props();
+	console.log(data)
 </script>
-<nav>
-	<a class="underline" href="/auth/login">Login</a>
-	<a class="underline" href="/auth/signup">Sign Up</a>
-</nav>
-{#each data.instruments as instrument}
-	<li>{instrument.name}</li>
+
+{#each data.links as link}
+	<h1>{link}</h1>
 {/each}

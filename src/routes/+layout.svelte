@@ -16,5 +16,11 @@
 		return () => data.subscription.unsubscribe();
 	});
 </script>
-
+<nav class="grid grid-cols-3 bg-green-200">
+	<div class="flex justify-center items-center">Left</div>
+	<div class="flex justify-center items-center">
+		<h1 class="text-4xl">LinkIt</h1>
+	</div>
+	<div class="flex justify-center items-center">Right</div>
+</nav>
 {@render children()}
