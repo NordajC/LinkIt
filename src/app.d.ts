@@ -18,7 +18,8 @@ declare global {
 }
 
 
-type Link = {
+export type Link = {
+	name : string,
 	url: string;
 	icon: string;
 	description: string;

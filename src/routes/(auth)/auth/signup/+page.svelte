@@ -14,6 +14,9 @@
 	<label>
 		Password:
 		<input type="password" placeholder="Password" name="password" required minlength="8" />
+	</label><label>
+		Username
+		<input type="username" placeholder="Username" name="username" required minlength="3" />
 	</label>
 	<button class="bg-slate-400 rounded-lg p-2"> Sign Up </button>
 	<p>Already have an account? <a class="text-blue-700 underline" href="/auth/login">Log In</a></p>
