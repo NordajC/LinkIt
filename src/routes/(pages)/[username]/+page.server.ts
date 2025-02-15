@@ -1,5 +1,4 @@
 import { z } from 'zod';
-
 // Define Zod schemas
 const UserInfoSchema = z.object({
     id: z.string().uuid(),

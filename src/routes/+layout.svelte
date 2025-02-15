@@ -16,6 +16,4 @@
 		return () => data.subscription.unsubscribe();
 	});
 </script>
-
-
 {@render children()}
