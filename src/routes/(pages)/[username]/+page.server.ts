@@ -1,5 +1,4 @@
 import { z } from 'zod';
-
 // Define Zod schemas
 const UserInfoSchema = z.object({
     id: z.string().uuid(),
@@ -48,7 +47,7 @@ export async function load({ locals: { supabase }, params }) {
         const { data, error } = await supabase
             .from('links')
             .select('*')
-            .eq('user_id', params.username);
+            .eq('user_id', 'fc4621b4-2591-49e6-879f-9551fa952392');
             
         if (error) {
             console.error('Database error (links):', error.message);
