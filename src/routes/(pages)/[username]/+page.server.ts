@@ -48,7 +48,7 @@ export async function load({ locals: { supabase }, params }) {
         const { data, error } = await supabase
             .from('links')
             .select('*')
-            .eq('user_id', 'fc4621b4-2591-49e6-879f-9551fa952392');
+            .eq('user_id', params.username);
             
         if (error) {
             console.error('Database error (links):', error.message);
