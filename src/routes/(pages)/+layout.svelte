@@ -13,4 +13,9 @@
 		</h1>
 	</div>
 	<div class="flex justify-center items-center">Right</div>
-</nav>{@render children()}
+</nav>
+
+<div class="w-full justify-items-center align-middle mt-20">
+	{@render children()}
+</div>
+
