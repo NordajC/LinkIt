@@ -19,12 +19,43 @@ export const actions = {
         });
 
         if (error) {
-            console.error(error);
+            console.error("Error signing up: ", error);
             return fail(422, {
                 error: error.message
             });
-        } else {
-            redirect(303, `/${username}`);
         }
+
+        // Log in the user immediately
+        const { data: loginData, error: loginError } = await supabase.auth.signInWithPassword({
+            email,
+            password
+        });
+
+        if (loginError) {
+            console.error("Error logging in after sign-up: ", loginError);
+            return fail(422, { error: "User must verify email before logging in." });
+        }
+
+        // Fetch authenticated user
+        const { data: userData, error: userError } = await supabase.auth.getUser();
+
+        if (userError || !userData.user) {
+            console.error("Error fetching user: ", userError);
+            return fail(422, { error: "Failed to retrieve user after sign-up." });
+        }
+
+        const { data, error: insertError } = await supabase
+            .from('users')
+            .insert([{ username, email }]);
+
+        if (insertError) {
+            console.error("Insert Error: ", insertError);
+            return fail(422, {
+                error: insertError.message
+            });
+        }
+
+        redirect(303, `/${username}`);
+
     },
 } satisfies Actions;
