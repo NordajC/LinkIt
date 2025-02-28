@@ -9,9 +9,9 @@ export const load = (async ({ locals }) => {
     }
     return {
         subroutes: [
+            { name: "Links", path: "/edit/links" },
             { name: "Analytics", path: "/edit/analytics" },
             { name: "Design", path: "/edit/design" },
-            { name: "Links", path: "/edit/links" },
             { name: "Settings", path: "/edit/settings" }
         ],
 
