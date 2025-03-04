@@ -4,6 +4,13 @@
 	let { data } = $props();
 </script>
 
-{#each data.links as link}
-	<Link icon={link.icon ?? ''} name={link.name} description={link.description} />
-{/each}
+<main class="flex flex-col items-center gap-6 justify-center">
+	{#each data.links as link}
+		<Link
+			icon={link.icon ?? ''}
+			name={link.name}
+			description={link.description ?? ''}
+			url={link.url}
+		/>
+	{/each}
+</main>

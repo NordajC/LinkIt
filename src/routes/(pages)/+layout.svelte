@@ -5,15 +5,17 @@
 	let { data, children }: { data: LayoutData; children: Snippet } = $props();
 </script>
 
-<nav class="grid grid-cols-3 bg-green-200">
-	<div class="flex justify-center items-center">Left</div>
-	<div class="flex justify-center items-center">
-		<h1 class="text-4xl">
-			<a href="/"> LinkIt</a>
-		</h1>
-	</div>
-	<a href="/edit/links" class="flex justify-center items-center">
-		<Settings/>
-	</a>
-</nav>
-{@render children()}
+<div class="grid grid-rows-[auto_1fr] h-screen">
+	<nav class="grid grid-cols-[auto_1fr_auto] bg-primary text-primary-foreground p-2 px-10 m-3 rounded-2xl">
+		<div class="place-items-center place-self-center">Left</div>
+		<div class="place-items-center place-self-center">
+			<h1 class="text-4xl">
+				<a href="/">LinkIt</a>
+			</h1>
+		</div>
+		<a href="/edit/links" class="place-items-center place-self-center">
+			<Settings/>
+		</a>
+	</nav>
+	{@render children()}
+</div>

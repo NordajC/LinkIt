@@ -77,6 +77,36 @@
   }
 }
 
+@layer base {
+  h1 {
+    @apply font-bold;
+    font-size: clamp(2rem, 5vw, 4rem);
+  }
+  h2 {
+    @apply font-bold;
+    font-size: clamp(1.75rem, 4vw, 3rem);
+  }
+  h3 {
+    @apply font-semibold;
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+  }
+  h4 {
+    @apply font-semibold;
+    font-size: clamp(1.25rem, 2.5vw, 2rem);
+  }
+  h5 {
+    @apply font-medium;
+    font-size: clamp(1.1rem, 2vw, 1.5rem);
+  }
+  h6 {
+    @apply font-medium;
+    font-size: clamp(1rem, 1.5vw, 1.25rem);
+  }
+  p {
+    font-size: clamp(1rem, 1.25vw, 1.125rem);
+  }
+}
+
 @layer base{
   /* ========================= */
   /*          BUTTONS          */
