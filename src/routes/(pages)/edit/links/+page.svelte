@@ -5,7 +5,7 @@
 	let { data }: { data: PageData } = $props();
 </script>
 
-<main>
+<main class="">
 	{#each data.links as link}
 		<Link icon={link.icon ?? ''} name={link.name} description={link.description} />
 	{/each}

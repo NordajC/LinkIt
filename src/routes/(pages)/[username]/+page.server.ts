@@ -56,7 +56,7 @@ export async function load({ locals: { supabase }, params }) {
 
         try {
             const validatedData = LinkArraySchema.parse(data); // Validate the array of links
-            console.log('Validated links:', validatedData);
+            // console.log('Validated links:', validatedData);
             return validatedData;
         } catch (validationError) {
             console.error('Validation error (links):', validationError.errors);

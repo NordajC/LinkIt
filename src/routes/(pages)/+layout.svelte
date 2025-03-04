@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { Snippet } from 'svelte';
 	import type { LayoutData } from './$types';
-
+	import { Settings } from 'lucide-svelte';
 	let { data, children }: { data: LayoutData; children: Snippet } = $props();
 </script>
 
@@ -12,6 +12,8 @@
 			<a href="/"> LinkIt</a>
 		</h1>
 	</div>
-	<div class="flex justify-center items-center">Right</div>
+	<a href="/edit/links" class="flex justify-center items-center">
+		<Settings/>
+	</a>
 </nav>
 {@render children()}
