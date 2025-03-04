@@ -1,3 +1,6 @@
+<script lang="ts">
+    let { data } = $props();
+</script>
 <h1>LinkIt</h1>
 <p>Description of LinkIt</p>
 

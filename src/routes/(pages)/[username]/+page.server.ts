@@ -18,6 +18,28 @@ const LinkSchema = z.object({
 const LinkArraySchema = z.array(LinkSchema);
 
 export async function load({ locals: { supabase }, params }) {
+
+    async function isAuthenticated() {
+        const { data, error } = await supabase.auth.getUser();
+        if (!error) {
+            if (data.user !== null) {
+                return {
+                    isAuthenticated: true
+                };
+            }
+            else {
+                return {
+                    isAuthenticated: false
+                }
+            }
+        } else {
+            console.log("Error getting user : ", error)
+            return {
+                isAuthenticated: false
+            }
+        }
+    }
+
     // Fetch and validate user info
     async function getUserInfo() {
         // const { data, error } = await supabase.from('users_information').select('*');
@@ -48,7 +70,7 @@ export async function load({ locals: { supabase }, params }) {
             .from('links')
             .select('*')
             .eq('user_id', 'fc4621b4-2591-49e6-879f-9551fa952392');
-            
+
         if (error) {
             console.error('Database error (links):', error.message);
             return [];
@@ -64,8 +86,8 @@ export async function load({ locals: { supabase }, params }) {
         }
     }
 
-    // Return data for the Svelte page
     return {
+        // isAuthenticated : await isAuthenticated(),
         links: await getUserLinks(), // Await the function to resolve the promise
         userInfo: await getUserInfo(), // Await the function to resolve the promise
     };
