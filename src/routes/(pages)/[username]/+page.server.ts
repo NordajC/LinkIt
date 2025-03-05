@@ -19,24 +19,18 @@ const LinkArraySchema = z.array(LinkSchema);
 
 export async function load({ locals: { supabase }, params }) {
 
-    async function isAuthenticated() {
+    /**
+     * Checks to see if the user is the Owner of the account
+     * Different to isAuthenticated cuz someone can be authenticated but
+     * they shouldnt be able to access someone elses account
+     */
+    async function isOwner(): Promise<boolean> {
         const { data, error } = await supabase.auth.getUser();
         if (!error) {
-            if (data.user !== null) {
-                return {
-                    isAuthenticated: true
-                };
-            }
-            else {
-                return {
-                    isAuthenticated: false
-                }
-            }
+            return data?.user?.user_metadata?.username === params.username
         } else {
             console.log("Error getting user : ", error)
-            return {
-                isAuthenticated: false
-            }
+            return false
         }
     }
 
@@ -87,7 +81,7 @@ export async function load({ locals: { supabase }, params }) {
     }
 
     return {
-        // isAuthenticated : await isAuthenticated(),
+        isOwner : await isOwner(),
         links: await getUserLinks(), // Await the function to resolve the promise
         userInfo: await getUserInfo(), // Await the function to resolve the promise
     };
