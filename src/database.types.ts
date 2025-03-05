@@ -182,3 +182,7 @@ export type CompositeTypes<
     : PublicCompositeTypeNameOrOptions extends keyof PublicSchema["CompositeTypes"]
     ? PublicSchema["CompositeTypes"][PublicCompositeTypeNameOrOptions]
     : never
+
+
+export type LinkRow = Database["public"]["Tables"]["links"]["Row"]
+export type LinkInsert = Database["public"]["Tables"]["links"]["Insert"]

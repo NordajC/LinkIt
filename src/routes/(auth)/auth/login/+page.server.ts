@@ -8,7 +8,7 @@ export const actions = {
 
         const { error } = await supabase.auth.signInWithPassword({ email, password })
         if (error) {
-            // console.error(error)
+            console.error(error)
             return fail(422, {
                 error: error.message
             });
@@ -20,9 +20,10 @@ export const actions = {
                 .single();
 
             if (userError) {
-                // console.error("usererror: ", userError);
+                console.error("usererror: ", userError);
+                console.error("user does not exist in `users` table")
                 return fail(422, {
-                    error: userError.message
+                    error: 'Server Error'
                 });
             }
             // console.log("userdata: ", userData)

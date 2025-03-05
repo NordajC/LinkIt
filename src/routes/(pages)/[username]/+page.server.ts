@@ -18,6 +18,22 @@ const LinkSchema = z.object({
 const LinkArraySchema = z.array(LinkSchema);
 
 export async function load({ locals: { supabase }, params }) {
+
+    /**
+     * Checks to see if the user is the Owner of the account
+     * Different to isAuthenticated cuz someone can be authenticated but
+     * they shouldnt be able to access someone elses account
+     */
+    async function isOwner(): Promise<boolean> {
+        const { data, error } = await supabase.auth.getUser();
+        if (!error) {
+            return data?.user?.user_metadata?.username === params.username
+        } else {
+            console.log("Error getting user : ", error)
+            return false
+        }
+    }
+
     // Fetch and validate user info
     async function getUserInfo() {
         // const { data, error } = await supabase.from('users_information').select('*');
@@ -48,7 +64,7 @@ export async function load({ locals: { supabase }, params }) {
             .from('links')
             .select('*')
             .eq('user_id', 'fc4621b4-2591-49e6-879f-9551fa952392');
-            
+
         if (error) {
             console.error('Database error (links):', error.message);
             return [];
@@ -56,7 +72,7 @@ export async function load({ locals: { supabase }, params }) {
 
         try {
             const validatedData = LinkArraySchema.parse(data); // Validate the array of links
-            console.log('Validated links:', validatedData);
+            // console.log('Validated links:', validatedData);
             return validatedData;
         } catch (validationError) {
             console.error('Validation error (links):', validationError.errors);
@@ -64,8 +80,8 @@ export async function load({ locals: { supabase }, params }) {
         }
     }
 
-    // Return data for the Svelte page
     return {
+        isOwner : await isOwner(),
         links: await getUserLinks(), // Await the function to resolve the promise
         userInfo: await getUserInfo(), // Await the function to resolve the promise
     };
