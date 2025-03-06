@@ -10,6 +10,25 @@
 	let { data, form }: PageProps = $props();
 	let showModal = $state(false);
 
+
+	let showAlertSuccess = $state(true);
+
+	function hideAlertSuccess() {
+		showAlertSuccess = false;
+	}
+	if (form?.success === true) {
+		setTimeout(hideAlertSuccess, 3000);
+	}
+
+	let showAlertError = $state(true);
+
+	function hideAlertError() {
+		showAlertError = false;
+	}
+	if (form?.success === false) {
+		setTimeout(hideAlertError, 3000);
+	}
+
 	console.log('form :: ', form);
 </script>
 
@@ -66,14 +85,47 @@
 				/>
 			</label>
 			<button class="btn btn-secondary">Create</button>
-			
 		</form>
 	</Modal>
 	{#if form}
 		{#if form?.success}
-			<p>Successfuly created link</p>
-		{:else}
-			<p>Not successful</p>
+			<div class="alert alert-success fixed bottom-4 right-4 w-auto max-w-md shadow-lg z-50"
+				onclick={hideAlertSuccess}
+			>
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					class="stroke-current shrink-0 h-6 w-6"
+					fill="none"
+					viewBox="0 0 24 24"
+					><path
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						stroke-width="2"
+						d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+					/></svg
+				>
+				<span>Successfully created link!</span>
+			</div>
+		{:else if showAlertError}
+			<div
+				class="alert alert-error fixed bottom-4 right-4 w-auto max-w-md shadow-lg z-50 cursor-pointer"
+				onclick={hideAlertError}
+			>
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					class="stroke-current shrink-0 h-6 w-6"
+					fill="none"
+					viewBox="0 0 24 24"
+				>
+					<path
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						stroke-width="2"
+						d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+					/>
+				</svg>
+				<span>Error creating link. Please try again.</span>
+			</div>
 		{/if}
 	{/if}
 </main>
