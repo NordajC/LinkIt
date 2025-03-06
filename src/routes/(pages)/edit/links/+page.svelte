@@ -1,25 +1,16 @@
 <script lang="ts">
 	import type { PageData } from './$types';
+	import type { PageProps } from '../$types';
 	import Link from '$lib/components/Link.svelte';
 	import Modal from '$lib/components/Modal.svelte';
 	import { Plus } from 'lucide-svelte';
 	import type { LinkInsert } from '../../../../database.types';
 
-	let { data }: { data: PageData } = $props();
-
+	// let { data }: { data: PageData } = $props();
+	let { data, form }: PageProps = $props();
 	let showModal = $state(false);
 
-	// Modal form data
-	// let linkData : LinkInsert = {
-	// 	name: '',
-	// 	url: '',
-	// 	icon: '',
-	// 	description: '',
-	// 	created_at: '',
-	// 	id: 0,
-	// 	user_id: null,
-	// 	username: null
-	// };
+	console.log('form :: ', form);
 </script>
 
 <main class="flex flex-col items-center">
@@ -57,14 +48,32 @@
 
 			<label class="label">
 				<span class="label-text">Description</span>
-				<input class="input input-bordered w-full" name="description" placeholder="Enter description" required />
+				<input
+					class="input input-bordered w-full"
+					name="description"
+					placeholder="Enter description"
+					required
+				/>
 			</label>
 
 			<label class="label">
 				<span class="label-text">Icon</span>
-				<input class="input input-bordered w-full" name="icon" placeholder="Enter icon URL" required />
+				<input
+					class="input input-bordered w-full"
+					name="icon"
+					placeholder="Enter icon URL"
+					required
+				/>
 			</label>
 			<button class="btn btn-secondary">Create</button>
+			
 		</form>
 	</Modal>
+	{#if form}
+		{#if form?.success}
+			<p>Successfuly created link</p>
+		{:else}
+			<p>Not successful</p>
+		{/if}
+	{/if}
 </main>

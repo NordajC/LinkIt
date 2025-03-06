@@ -1,21 +1,4 @@
-import { z } from 'zod';
-// Define Zod schemas
-const UserInfoSchema = z.object({
-    id: z.string().uuid(),
-    theme: z.enum(['Default', 'Mocha', 'Nord', 'Gruvbox']), // Fixed enum values
-});
 
-const LinkSchema = z.object({
-    id: z.number(),
-    user_id: z.string().uuid(),
-    created_at: z.string(), //TODO the supabase datetime sent isnt the same as `.datetime()` that zod uses. needs checking
-    url: z.string().url(),
-    name: z.string(),
-    description: z.string().nullable(),
-    icon: z.string().nullable(),
-});
-
-const LinkArraySchema = z.array(LinkSchema);
 
 export async function load({ locals: { supabase }, params }) {
 
@@ -63,25 +46,19 @@ export async function load({ locals: { supabase }, params }) {
         const { data, error } = await supabase
             .from('links')
             .select('*')
-            .eq('user_id', 'fc4621b4-2591-49e6-879f-9551fa952392');
+            .eq('username', params.username);
 
         if (error) {
             console.error('Database error (links):', error.message);
             return [];
+        } else {
+            return data
         }
 
-        try {
-            const validatedData = LinkArraySchema.parse(data); // Validate the array of links
-            // console.log('Validated links:', validatedData);
-            return validatedData;
-        } catch (validationError) {
-            console.error('Validation error (links):', validationError.errors);
-            return [];
-        }
     }
 
     return {
-        isOwner : await isOwner(),
+        isOwner: await isOwner(),
         links: await getUserLinks(), // Await the function to resolve the promise
         userInfo: await getUserInfo(), // Await the function to resolve the promise
     };

@@ -1,6 +1,7 @@
 import type { PageServerLoad } from './$types';
 import type { LinkRow } from '../../../../database.types';
 import type { Actions } from '../$types';
+import { LinkSchema } from '../../../../zod.types';
 export const load = (async ({ locals: { supabase, user } }) => {
 
     const { data, error: error } = await supabase.from('links').select().eq('username', user?.user_metadata.username)
@@ -17,17 +18,31 @@ export const load = (async ({ locals: { supabase, user } }) => {
 }) satisfies PageServerLoad;
 
 export const actions = {
-    default : async ({request, locals: {supabase}}) => {
-        const data = await request.formData();
-        const { data : userData, error : userError } = await supabase.auth.getUser();
-        const name = data.get("name")
-        const url = data.get("url")
-        const description = data.get("description")
-        const icon = data.get("icon")
-        const username = userData.user?.user_metadata.username
+    default: async ({ request, locals: { supabase } }) => {
+        try {
+            const formData = await request.formData();
+            const { data: userData, error: userError } = await supabase.auth.getUser();
+            
+            if (userError) throw new Error('Authentication failed');
 
-        const { error } = await supabase.from('links').insert([{name, url, description, icon, username}])
+            const linkData = {
+                name: formData.get("name"),
+                created_at: formData.get("created_at"),
+                url: formData.get("url"),
+                description: formData.get("description"),
+                icon: formData.get("icon"),
+                username: userData.user?.user_metadata.username
+            };
 
-        console.log("SUPABASE EROR: ", error)
+            const validatedData = LinkSchema.parse(linkData);
+            const { error } = await supabase.from('links').insert([validatedData]);
+
+            if (error) throw error;
+
+            return { success: true };
+        } catch (error) {
+            console.error('Error inserting link:', error);
+            return { success: false, error: error instanceof Error ? error.message : 'Unknown error' };
+        }
     }
-} satisfies Actions
+} satisfies Actions;
