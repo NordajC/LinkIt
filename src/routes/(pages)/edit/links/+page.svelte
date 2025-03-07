@@ -10,7 +10,6 @@
 	let { data, form }: PageProps = $props();
 	let showModal = $state(false);
 
-
 	let showAlertSuccess = $state(true);
 
 	function hideAlertSuccess() {
@@ -89,7 +88,8 @@
 	</Modal>
 	{#if form}
 		{#if form?.success}
-			<div class="alert alert-success fixed bottom-4 right-4 w-auto max-w-md shadow-lg z-50"
+			<div
+				class="alert alert-success fixed bottom-4 right-4 w-auto max-w-md shadow-lg z-50"
 				onclick={hideAlertSuccess}
 			>
 				<svg
