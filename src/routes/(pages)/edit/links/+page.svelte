@@ -132,41 +132,25 @@
 			<div class="cursor-move">Grab</div>
 		</div>
 	{/each}
-	<button
-		class="btn rounded-full btn-secondary absolute bottom-32 right-4"
-		onclick={(event) => {
-			event.preventDefault();
-			showModal = true;
-		}}
-	>
-		<Plus />
-	</button>
 
 	<Dialog.Root>
-		<Dialog.Trigger
-			class="rounded-input bg-dark text-black
-			shadow-mini hover:bg-dark/95 focus-visible:ring-foreground focus-visible:ring-offset-background focus-visible:outline-hidden
-			inline-flex h-12 items-center justify-center whitespace-nowrap px-[21px] text-[15px] font-semibold transition-colors focus-visible:ring-2 focus-visible:ring-offset-2 active:scale-[0.98]"
-		>
-			Create Link
-		</Dialog.Trigger>
+		<Dialog.Trigger class="btn">Create Link</Dialog.Trigger>
 		<Dialog.Portal>
 			<Dialog.Overlay
 				class="data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 fixed inset-0 z-50 bg-black/80"
 			/>
 			<Dialog.Content
-				class="rounded-card-lg bg-background shadow-popover data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 outline-hidden fixed left-[50%] top-[50%] z-50 w-full max-w-[calc(100%-2rem)] translate-x-[-50%] translate-y-[-50%] border p-5 sm:max-w-[490px] md:w-full"
+				class="bg-background shadow-popover data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 outline-hidden fixed left-[50%] top-[50%] z-50 w-[80%] max-w-[calc(100%-2rem)] translate-x-[-50%] translate-y-[-50%] border p-5 sm:max-w-[490px] md:w-full"
 			>
 				<Dialog.Title
-					class="flex w-full items-center justify-center text-lg font-semibold tracking-tight"
+					class="flex w-full items-center justify-center font-semibold tracking-tight"
 				>
 					Create Link
 				</Dialog.Title>
-				<!-- <Separator.Root class="bg-muted -mx-5 mb-6 mt-5 block h-px" /> -->
 
 				<Tabs.Root
 					value="custom"
-					class="rounded-card border-muted bg-background-alt shadow-card w-[390px] border p-3"
+					class="rounded-card border-muted bg-background-alt shadow-card p-3"
 				>
 					<Tabs.List
 						class="rounded-9px bg-dark-10 shadow-mini-inset dark:bg-background grid w-full grid-cols-2 gap-1 p-1 text-sm font-semibold leading-[0.01em] dark:border dark:border-neutral-600/30"
@@ -281,20 +265,11 @@
 						</div>
 					</Tabs.Content>
 				</Tabs.Root>
-
-				<div class="flex w-full justify-end">
-					<Dialog.Close
-						class="h-input rounded-input bg-dark text-background shadow-mini hover:bg-dark/95 focus-visible:ring-dark focus-visible:ring-offset-background focus-visible:outline-hidden inline-flex items-center justify-center px-[50px] text-[15px] font-semibold focus-visible:ring-2 focus-visible:ring-offset-2 active:scale-[0.98]"
-					>
-						Save
-					</Dialog.Close>
-				</div>
 				<Dialog.Close
-					class="focus-visible:ring-foreground focus-visible:ring-offset-background focus-visible:outline-hidden absolute right-5 top-5 rounded-md focus-visible:ring-2 focus-visible:ring-offset-2 active:scale-[0.98]"
+					class="absolute right-5 top-5 "
 				>
 					<div>
-						<X class="text-foreground size-5" />
-						<span class="sr-only">Close</span>
+						<X class="text-foreground size-6" />
 					</div>
 				</Dialog.Close>
 			</Dialog.Content>
