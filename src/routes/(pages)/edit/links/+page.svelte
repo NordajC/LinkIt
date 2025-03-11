@@ -13,7 +13,10 @@
 		Github,
 		Linkedin,
 		InstagramIcon,
-		TwitterIcon
+		TwitterIcon,
+
+		TreePalm
+
 	} from 'lucide-svelte';
 	let { data, form }: PageProps = $props();
 
@@ -115,7 +118,7 @@
 
 {#snippet socialPresetButton(preset: SocialPreset)}
 	<button class="btn btn-secondary" onclick={() => selectPreset(preset)}>
-		<svelte:component this={preset.icon} />
+		<!-- <svelte:component this={preset.icon} /> -->
 		<p>{preset.name}</p>
 	</button>
 {/snippet}
@@ -128,7 +131,8 @@
 				<option value="Delete"> Delete </option>
 				<option value="copy"> Duplicate </option>
 			</select>
-			<Link icon={link.icon ?? ''} name={link.name} description={link.description} url={link.url} />
+			<!-- <Link icon={link.icon ?? ''} name={link.name} description={link.description} url={link.url} /> -->
+			<Link icon={link.icon ?? ''} name={link.name} description={link.description} url={""} />
 			<div class="cursor-move">Grab</div>
 		</div>
 	{/each}

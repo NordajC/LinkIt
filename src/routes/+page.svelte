@@ -1,22 +1,19 @@
 <script lang="ts">
+	import LinkForm from '$lib/components/LinkForm.svelte';
 	import { Accordion } from 'bits-ui';
 	import {
 		ArrowRight,
 		CheckCircle2,
 		Facebook,
 		Github,
-		Icon,
 		Instagram,
 		Linkedin,
-		Menu,
 		Twitch,
 		Twitter,
 		Youtube,
 		TreePalm,
-		ArrowDown,
 		ChevronDown
 	} from 'lucide-svelte';
-	import key from 'lucide-svelte/icons/key';
 
 	let { data } = $props();
 
@@ -218,62 +215,7 @@
 						</button>
 					</div>
 
-					<div class="rounded-lg border bg-background p-4 shadow-sm">
-						<div class="flex flex-col space-y-4">
-							<div class="flex items-center justify-between">
-								<h3 class="font-semibold">Add New Link</h3>
-								<button class="btn"> Close </button>
-							</div>
-
-							<div class="grid grid-cols-4 gap-2">
-								{#each [Instagram, Twitter, Youtube, Facebook, Twitch, Github, Linkedin, TreePalm] as icon, i}
-									<button class="btn flex flex-col items-center justify-center h-20 p-2">
-										<svelte:component this={icon} class="h-5 w-5" />
-										<span class="mt-1 text-xs">
-											{i === 7
-												? 'Custom'
-												: [
-														'Instagram',
-														'Twitter',
-														'YouTube',
-														'Facebook',
-														'Twitch',
-														'GitHub',
-														'LinkedIn'
-													][i]}
-										</span>
-									</button>
-								{/each}
-							</div>
-
-							<div class="space-y-2">
-								<label class="text-sm font-medium">Display Name</label>
-								<input class="input" placeholder="My Instagram" />
-							</div>
-
-							<div class="space-y-2">
-								<label class="text-sm font-medium">Username/Handle</label>
-								<div class="flex">
-									<div
-										class="bg-muted flex items-center px-3 rounded-l-md border border-r-0 border-input text-sm text-muted-foreground"
-									>
-										https://instagram.com/
-									</div>
-									<input class="input rounded-l-none" placeholder="username" />
-								</div>
-							</div>
-
-							<div class="space-y-2">
-								<label class="text-sm font-medium">Description (Optional)</label>
-								<input class="input" placeholder="Follow me on Instagram" />
-							</div>
-
-							<div class="flex justify-end space-x-2">
-								<button class="btn">Cancel</button>
-								<button class="btn btn-primary">Add Link</button>
-							</div>
-						</div>
-					</div>
+					<LinkForm/>
 				</div>
 			</div>
 		</section>

@@ -1,5 +1,5 @@
 import type { Session, SupabaseClient, User } from '@supabase/supabase-js'
-
+import { TreePalm } from 'lucide-svelte';
 declare global {
 	namespace App {
 		// interface Error {}
@@ -21,7 +21,8 @@ declare global {
 export type Link = {
 	name : string,
 	url: string;
-	icon: string;
+	// icon : string ,
+	icon: any;
 	description: string;
 }
 const INSTAGRAM_LINK: Link = {

@@ -2,10 +2,10 @@
 	let { form } = $props();
 </script>
 
-<h1 class="text-center text-2xl">Login</h1>
+<h2 class="text-center text-secondary">Login</h2>
 <form
 	method="POST"
-	class="flex flex-col items-center bg-white-100 p-8 form border-none shadow-none gap-4 form w-xl"
+	class="flex flex-col items-center p-8 form border-none shadow-none gap-4 w-xl"
 >
 	<label class="form-label"
 		>Email
