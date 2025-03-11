@@ -2,7 +2,7 @@
 	let { form } = $props();
 </script>
 
-<h1 class="text-center text-4xl">Sign Up</h1>
+<h2 class="text-center ">Sign Up</h2>
 <form
 	method="POST"
 	class="flex flex-col items-center bg-white-100 p-8 form border-none shadow-none gap-4 form w-xl"
