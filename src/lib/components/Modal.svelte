@@ -21,7 +21,7 @@
 	{@render children?.()}
 	<div>
 		<button class="btn btn-primary"
-		  onclick={() => dialog.close()}>close modal</button>
+		  onclick={() => dialog.close()}>Close</button>
 	</div>
 </dialog>
 
